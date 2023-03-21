@@ -1,17 +1,17 @@
 <?php
 
-$data = array_map('trim', $data);
+$data = array_map('trim', $_POST);
 $data = array_map('htmlentities', $data);
 
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // nettoyage et validation des données soumises via le formulaire 
-  if (!isset($_POST['user_firstname']) || trim($_POST['user_firstname']) === '')
+  if (!isset($data['user_firstname']) || empty($data['user_firstname']) === '')
     $errors[] = "Le prénom est obligatoire";
-  if (!isset($_POST['user_lastname']) || trim($_POST['user_lastname']) === '')
+  if (!isset($data['user_lastname']) || empty($data['user_lastname']) === '')
     $errors[] = "Le nom est obligatoire";
-  if (!isset($_POST['user_dateOfBirth']) || trim($_POST['user_dateOfBirth']) === '')
+  if (!isset($data['user_dateOfBirth']) || empty($data['user_dateOfBirth']) === '')
     $errors[] = "La date de naissance est obligatoire";
   
   if (empty($errors)) {
