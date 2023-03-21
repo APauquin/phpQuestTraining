@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div>
       <label for="message">Message :</label>
-      <textarea type="text" id="message" name="user_message" required></textarea>
+      <textarea rows="5" id="message" name="user_message" required></textarea>
     </div>
 
     <div class="button">

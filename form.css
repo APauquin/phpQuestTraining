@@ -3,3 +3,7 @@ div {
     gap: 0.5em;
     margin-bottom: 1em;
 }
+
+body {
+    margin: 10vh 30%;
+}
