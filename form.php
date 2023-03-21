@@ -1,5 +1,8 @@
 <?php
 
+$data = array_map('trim', $data);
+$data = array_map('htmlentities', $data);
+
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -10,11 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors[] = "Le nom est obligatoire";
   if (!isset($_POST['user_dateOfBirth']) || trim($_POST['user_dateOfBirth']) === '')
     $errors[] = "La date de naissance est obligatoire";
-
+  
   if (empty($errors)) {
     // traitement du formulaire
     // puis redirection
     header('Location: info.php');
+  }
+
+  if(!filter_var($data('user_email'), FILTER_VALIDATE_EMAIL)) {
+    $errors[] = "L'adresse mail n’est pas au bon format.";
   }
 }
 
@@ -36,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-
+  
 
   <?php // Affichage des éventuelles erreurs 
   if (count($errors) > 0) : ?>
@@ -96,9 +103,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
   </form>
+  
 
+  <?= 
 
-  <?= var_dump($_POST)?>
+  
+  var_dump($_POST);
+  
+  ?>
 </body>
 
 </html>
