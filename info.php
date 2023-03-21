@@ -8,17 +8,21 @@
     <title>Document</title>
 </head>
 
+
 <body>
-    
+
+
+
     <?php	
-        $nom = $_POST['user_name'];
+        $name = $_POST['user_firstname'] . ' ' . $_POST['user_lastname'];
         $courriel = $_POST['user_email'];
         $phone = $_POST['user_phoneNumber'];
         $sujet = $_POST['user_sujet'];
         $message = $_POST['user_message'];
     ?>
-    
-    <p> Hello <?= $nom ?>, you suck. You contacted us to talk about <?= $sujet ?>.
+
+    <p> Hello <?= $name?>, you suck. You contacted us to talk about <?= $sujet ?>.
+
 
     We will not be contacting you and have sent your email: "<?= $courriel ?>" and phone number: "<?= $phone ?>" to shady supplement companies so they may bombard you with ads. Screw you! </p> <br>
     
@@ -27,5 +31,6 @@
     <p> <?= $message ?> </p>
     
 </body>
+
 
 </html>
